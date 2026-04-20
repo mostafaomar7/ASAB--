@@ -1,0 +1,11 @@
+<section class="page">
+  <app-section-header title="الداشبورد الرئيسي" subtitle="واجهة أدوار الإدارة المالية" />
+
+  <div class="roles-grid">
+    @for (role of roles; track role.route) {
+      <a [routerLink]="role.route" class="card-link">
+        <app-role-card [title]="role.title" [description]="role.description" />
+      </a>
+    }
+  </div>
+</section>

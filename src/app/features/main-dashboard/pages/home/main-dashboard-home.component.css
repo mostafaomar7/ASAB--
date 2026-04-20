@@ -1,0 +1,14 @@
+.page {
+  display: grid;
+  gap: 24px;
+}
+
+.roles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.card-link {
+  text-decoration: none;
+}
