@@ -1,11 +1,47 @@
-<section class="page">
-  <app-section-header title="بوابة الشركات" subtitle="واجهة مخصصة لمجموعات المطاعم" />
+<section class="page" dir="rtl">
+  
+  <div class="top-bar">
+    <button class="lang-btn">English 🌐</button>
+  </div>
+
+  <div class="header-section">
+    <div class="main-icon-wrapper">
+      <span class="main-icon">👑</span>
+    </div>
+    <h1>بوابة الشركات</h1>
+    <p class="subtitle">مدعوم بنظام <span class="brand-text">عصب</span> — مخصص لمجموعات المطاعم</p>
+    
+    <div class="connection-status">
+      مجموعة التاج للمطاعم 
+      <span class="status-indicator"><span class="dot"></span> متصل</span>
+    </div>
+  </div>
 
   <div class="roles-grid">
-    @for (role of roles; track role.route) {
-      <a [routerLink]="role.route" class="card-link">
-        <app-role-card [title]="role.title" [description]="role.description" />
+   @for (role of roles; track role.returnUrl) {
+  <a routerLink="/login" [queryParams]="{ returnUrl: role.returnUrl }" class="card-link">
+        <div class="horizontal-card">
+          <div class="card-right">
+            <div class="icon-box" [style.background-color]="role.iconColor">{{ role.icon }}</div>
+            <div class="text-box">
+              <h3>{{ role.title }}</h3>
+              <p>{{ role.description }}</p>
+            </div>
+          </div>
+          
+          <div class="card-left">
+            @if (role.isSpecial) {
+              <span class="special-badge">مميز</span>
+            }
+            <span class="arrow-icon">‹</span>
+          </div>
+        </div>
       </a>
     }
   </div>
+
+  <div class="footer">
+    <p>نظام عصب - الإدارة المالية لمجموعات المطاعم - v2.1</p>
+  </div>
+
 </section>

@@ -1,8 +1,6 @@
-<article class="role-card">
-  @if (badge()) {
-    <span class="badge">{{ badge() }}</span>
-  }
-
-  <h3>{{ title() }}</h3>
-  <p>{{ description() }}</p>
-</article>
+<div class="role-card">
+  <div class="icon-wrapper">{{ icon }}</div>
+  <h3>{{ title }}</h3>
+  <p>{{ description }}</p>
+  <span class="badge">{{ tag }}</span>
+</div>

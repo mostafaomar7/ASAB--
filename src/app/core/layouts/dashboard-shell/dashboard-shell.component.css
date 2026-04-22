@@ -1,18 +1,14 @@
-.dashboard-shell {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  min-height: 100vh;
+.dashboard-layout {
+  display: flex;
+  height: 100vh; /* ملء الشاشة بالكامل */
+  background-color: #050810; /* خلفية داكنة جداً للمحتوى الأساسي */
+  overflow: hidden; /* لمنع ظهور سكرول في الصفحة بالكامل */
+  direction: rtl; /* ضمان اتجاه التخطيط من اليمين لليسار */
 }
 
-.sidebar {
-  padding: 24px;
-  border-inline-end: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.content {
-  padding: 24px;
-}
-
-.active {
-  font-weight: 700;
+.dashboard-content {
+  flex: 1; /* أخذ باقي المساحة المتاحة بعد السايد بار */
+  padding: 30px;
+  overflow-y: auto; /* السماح بعمل سكرول للمحتوى فقط إذا كان طويلاً */
+  position: relative;
 }

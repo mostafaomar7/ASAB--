@@ -1,11 +1,31 @@
-<section class="page">
-  <app-section-header title="الداشبورد الرئيسي" subtitle="واجهة أدوار الإدارة المالية" />
+<section class="page" dir="rtl">
+  <div class="top-bar">
+    <button class="lang-btn">English 🌐</button>
+  </div>
+
+  <div class="header-section">
+    <div class="logo">
+      <span class="logo-icon">ع</span>
+      <h1>عصب ASAB</h1>
+    </div>
+    <p class="subtitle">نظام إدارة مالية المطاعم متعدد الفروع</p>
+    <p class="hint">اختر دورك للدخول إلى النموذج التفاعلي</p>
+  </div>
 
   <div class="roles-grid">
-    @for (role of roles; track role.route) {
-      <a [routerLink]="role.route" class="card-link">
-        <app-role-card [title]="role.title" [description]="role.description" />
+    @for (role of roles; track role.returnUrl) {
+  <a routerLink="/login" [queryParams]="{ returnUrl: role.returnUrl }" class="card-link">
+        <app-role-card 
+          [title]="role.title" 
+          [description]="role.description"
+          [icon]="role.icon"
+          [tag]="role.tag">
+        </app-role-card>
       </a>
     }
+  </div>
+
+  <div class="footer">
+    <p>نموذج تفاعلي — ASAB Prototype v2.0</p>
   </div>
 </section>

@@ -1,21 +1,21 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { RoleCardComponent } from '../../../../shared/ui/role-card/role-card.component';
-import { SectionHeaderComponent } from '../../../../shared/ui/section-header/section-header.component';
 
 @Component({
   selector: 'app-company-portal-home',
-  imports: [RouterLink, RoleCardComponent, SectionHeaderComponent],
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './company-portal-home.component.html',
   styleUrl: './company-portal-home.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CompanyPortalHomeComponent {
+  // تم تحديث البيانات لتتطابق تماماً مع النصوص والأيقونات في الصورة
   readonly roles = [
-    { title: 'رئيس الحسابات', description: 'الاعتمادات والإقفال النهائي', route: '/company-portal/head-accountant' },
-    { title: 'أمن الشركة', description: 'إدارة الاشتراكات والمستخدمين', route: '/company-portal/company-security' },
-    { title: 'مدير الفرع', description: 'رفع بيانات الفرع', route: '/company-portal/branch-manager' },
-    { title: 'محاسب', description: 'مراجعة العمليات المالية', route: '/company-portal/accountant' },
-    { title: 'مدير مشتريات', description: 'الشراء والموردون', route: '/company-portal/purchasing-manager' },
+    { title: 'أمن الشركة', description: 'إدارة الاشتراك والمستخدمين', icon: '🏢', iconColor: '#a855f7', isSpecial: true, returnUrl: '/company-portal/company-security' },
+    { title: 'رئيس الحسابات', description: 'الإشراف والاعتماد النهائي', icon: '👑', iconColor: '#3b82f6', isSpecial: false, returnUrl: '/company-portal/head-accountant' },
+    { title: 'محاسب', description: 'مراجعة العمليات المالية', icon: '📘', iconColor: '#06b6d4', isSpecial: false, returnUrl: '/company-portal/accountant' },
+    { title: 'مدير فرع', description: 'رفع بيانات الفرع اليومية', icon: '🏪', iconColor: '#10b981', isSpecial: false, returnUrl: '/company-portal/branch-manager' },
+    { title: 'مدير مشتريات', description: 'أوامر الشراء والموردين', icon: '🛒', iconColor: '#f97316', isSpecial: false, returnUrl: '/company-portal/purchasing-manager' },
   ];
 }

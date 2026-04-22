@@ -5,6 +5,7 @@ import { SectionHeaderComponent } from '../../../../shared/ui/section-header/sec
 
 @Component({
   selector: 'app-main-dashboard-home',
+  standalone: true,
   imports: [RouterLink, RoleCardComponent, SectionHeaderComponent],
   templateUrl: './main-dashboard-home.component.html',
   styleUrl: './main-dashboard-home.component.css',
@@ -12,11 +13,11 @@ import { SectionHeaderComponent } from '../../../../shared/ui/section-header/sec
 })
 export class MainDashboardHomeComponent {
   readonly roles = [
-    { title: 'المحاسب', description: 'مراجعة القيود اليومية', route: '/main-dashboard/accountant' },
-    { title: 'رئيس الحسابات', description: 'الاعتماد النهائي', route: '/main-dashboard/head-accountant' },
-    { title: 'أمن النظام', description: 'إدارة المستخدمين والاشتراكات', route: '/main-dashboard/system-security' },
-    { title: 'المخزن', description: 'إدارة الأصناف والحركات', route: '/main-dashboard/warehouse' },
-    { title: 'مدير المشتريات', description: 'طلبات الشراء والموردين', route: '/main-dashboard/purchasing-manager' },
-    { title: 'مدير الفرع', description: 'متابعة الفرع', route: '/main-dashboard/branch-manager' },
+    { title: 'أدمن النظام', description: 'إدارة المستخدمين، الاشتراكات، وإعدادات النظام الكاملة', icon: '🧠', tag: 'نظام', returnUrl: '/main-dashboard/system-admin' },
+    { title: 'رئيس الحسابات', description: 'الاعتماد النهائي للعمليات والإشراف على أداء المحاسبين', icon: '👑', tag: 'اعتماد نهائي', returnUrl: '/main-dashboard/head-accountant' },
+    { title: 'المحاسب', description: 'مراجعة وتدقيق العمليات اليومية من جميع الأفرع المخصصة', icon: '🧮', tag: 'مراجعة يومية', returnUrl: '/main-dashboard/accountant' },
+    { title: 'مدير الفرع', description: 'رفع المبيعات اليومية وإدارة موظفي وموردي الفرع', icon: '🏪', tag: 'فرع', returnUrl: '/main-dashboard/branch-manager' },
+    { title: 'مدير المشتريات', description: 'تجميع طلبات الشراء والتنسيق مع الموردين', icon: '🛒', tag: 'مشتريات', returnUrl: '/main-dashboard/purchasing-manager' },
+    { title: 'المورد', description: 'استلام طلبات التوريد وإدارة الكتالوج والأسعار', icon: '🏭', tag: 'مورد', returnUrl: '/main-dashboard/supplier' },
   ];
 }

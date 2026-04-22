@@ -1,14 +1,83 @@
 .page {
-  display: grid;
-  gap: 24px;
+  min-height: 100vh;
+  background-color: #0b0f19;
+  color: #FFFFFF;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
 }
+
+.top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; /* ليكون على اليسار مع dir rtl */
+  margin-bottom: 10px;
+}
+
+.lang-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.lang-btn:hover { background: rgba(255, 255, 255, 0.1); }
+
+.header-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.logo-icon {
+  background-color: #3b82f6;
+  color: white;
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 12px; font-weight: bold; font-size: 20px;
+}
+
+.header-section h1 {
+  font-size: 32px;
+  margin: 0;
+  color: #f8c850; /* اللون الذهبي/الأصفر الواضح في الصورة */
+}
+
+.header-section .subtitle { color: #a0a6b5; margin: 8px 0; }
+.header-section .hint { color: #6E29F6; font-size: 13px; } /* لمسة من اللون الأساسي */
 
 .roles-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, minmax(250px, 1fr));
   gap: 24px;
+  width: 100%;
+  max-width: 900px;
 }
 
 .card-link {
   text-decoration: none;
+  display: block;
 }
+
+.footer {
+  margin-top: auto;
+  padding-top: 40px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+/* التجاوب (Responsive) */
+@media (max-width: 900px) { .roles-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .roles-grid { grid-template-columns: 1fr; } }

@@ -1,15 +1,245 @@
 .feature-select-page {
-  padding: 40px;
+  min-height: 100vh;
+  background-color: #0b0f19; /* خلفية داكنة جداً تبرز الألوان */
+  color: #FFFFFF;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Tajawal', 'Cairo', sans-serif; /* يفضل استخدام خط عربي مثل Cairo */
 }
 
+/* Header Styles */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 5px;
+}
+
+.logo-icon {
+  background-color: #3b82f6; /* لون مقارب للوجو الأصلي */
+  color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.header h1 {
+  font-size: 32px;
+  margin: 0;
+  color: #5bb4ff; /* لون مقارب للنص في اللوجو */
+}
+
+.header .subtitle {
+  font-size: 14px;
+  color: #8b92a5;
+  margin: 5px 0 15px 0;
+}
+
+.header .desc {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.header .hint {
+  font-size: 13px;
+  color: #8b92a5;
+  margin: 5px 0;
+}
+
+/* Grid & Cards */
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 450px));
   gap: 24px;
+  width: 100%;
+  max-width: 1000px;
+  justify-content: center;
+  margin-bottom: 50px;
 }
 
 .entry-card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover Animation */
+.entry-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(110, 41, 246, 0.15);
+  border-color: rgba(110, 41, 246, 0.4);
+}
+
+/* إضاءة خفيفة في خلفية الكارت */
+.entry-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; left: 0; bottom: 0;
+  background: radial-gradient(circle at top right, rgba(110, 41, 246, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+.entry-card:hover::before {
+  opacity: 1;
+}
+
+/* للحفاظ على المحتوى فوق الإضاءة */
+.entry-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.title-container h3 {
+  margin: 0 0 5px 0;
+  font-size: 20px;
+}
+
+.title-container .sub-title {
+  font-size: 13px;
+  color: #6E29F6; /* إبراز اللون الأساسي هنا */
+  font-weight: 600;
+}
+
+.icon-placeholder {
+  font-size: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.card-desc {
+  font-size: 14px;
+  color: #a0a6b5;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Tags */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(110, 41, 246, 0.08);
+  border: 1px solid rgba(110, 41, 246, 0.3);
+  color: #e2d9f3;
+  transition: all 0.3s ease;
+}
+
+.entry-card:hover .tag {
+  border-color: rgba(110, 41, 246, 0.6);
+}
+
+.card-stats {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: auto; /* لدفعه للأسفل */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Buttons */
+.action-btn {
   display: block;
-  padding: 32px;
-  border-radius: 24px;
+  text-align: center;
+  padding: 12px 20px;
+  background-color: #6E29F6;
+  color: #FFFFFF;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.action-btn:hover {
+  background-color: #5a1ec4;
+  box-shadow: 0 4px 15px rgba(110, 41, 246, 0.3);
+}
+
+/* زر الكارت الثاني بخلفية شفافة وحواف ليبرز الـ Primary Color */
+.outline-btn {
+  background-color: transparent;
+  border: 1px solid #6E29F6;
+  color: #FFFFFF;
+}
+
+.outline-btn:hover {
+  background-color: rgba(110, 41, 246, 0.1);
+}
+
+/* Bottom Features (Pills) */
+.bottom-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+.feature-badge {
+  font-size: 12px;
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 30px;
+  color: #a0a6b5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.3s ease;
+}
+
+.feature-badge:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  font-size: 11px;
+  color: #4b5563;
+  text-align: center;
 }

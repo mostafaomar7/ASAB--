@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
 
 @Component({
   selector: 'app-role-card',
@@ -7,7 +7,9 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RoleCardComponent {
-  readonly title = input.required<string>();
-  readonly description = input<string>('');
-  readonly badge = input<string>('');
+  @Input() title!: string;
+@Input() description!: string;
+@Input() icon!: string;
+@Input() tag!: string;
+  
 }

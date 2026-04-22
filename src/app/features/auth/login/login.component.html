@@ -1,3 +1,43 @@
-<section class="login-page">
-  <h1>تسجيل الدخول</h1>
+<section class="login-page" dir="rtl">
+  <div class="login-card">
+    
+    <div class="logo-container">
+      <div class="logo-icon">ع</div>
+      <h2>عصب ASAB</h2>
+      <p>تسجيل الدخول للمنظومة المالية</p>
+    </div>
+
+    <form (submit)="onSubmit($event)">
+      <div class="input-group">
+        <label for="username">اسم المستخدم أو البريد الإلكتروني</label>
+        <div class="input-wrapper">
+          <span class="icon">👤</span>
+          <input type="text" id="username" placeholder="أدخل اسم المستخدم" required>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="password">كلمة المرور</label>
+        <div class="input-wrapper">
+          <span class="icon">🔒</span>
+          <input type="password" id="password" placeholder="أدخل كلمة المرور" required>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <label class="checkbox-container">
+          <input type="checkbox">
+          <span>تذكرني</span>
+        </label>
+        <a href="#" class="forgot-password">نسيت كلمة المرور؟</a>
+      </div>
+
+      <button type="submit" class="login-btn">دخول إلى الداشبورد</button>
+    </form>
+
+    <div class="back-link">
+      <a routerLink="/app"> &rarr; العودة لاختيار الأدوار</a>
+    </div>
+
+  </div>
 </section>

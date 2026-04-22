@@ -1,0 +1,18 @@
+<aside class="sidebar" dir="rtl">
+  <div class="sidebar-header">
+    </div>
+
+  <div class="sidebar-menu-container">
+    <ul class="sidebar-menu">
+      <li *ngFor="let item of visibleItems">
+        <a [routerLink]="item.route" routerLinkActive="active" class="sidebar-link">
+          <div class="link-content">
+            <span class="icon" *ngIf="item.icon" [class]="item.icon"></span> 
+            <span class="text">{{ item.label }}</span>
+          </div>
+        </a>
+      </li>
+    </ul> 
+  </div>
+  
+  </aside>
