@@ -48,10 +48,10 @@ export const appRoutes: Routes = [
     children: [
       // هنا تضع مسارات النظام الفعلي بعد اللوجين (المحتوى الذي يتغير بتغير السايد بار)
       // مثال:
-      // {
-      //   path: 'accountant',
-      //   loadComponent: () => import('./features/accountant/accountant-dashboard.component').then(m => m.AccountantDashboardComponent)
-      // },
+      {
+        path: 'kpis',
+        loadComponent: () => import('./features/company-portal/components/kpis/kpis').then(m => m.Kpis)
+      },
       // {
       //   path: 'branch-manager',
       //   loadComponent: () => import('./features/branch-manager/branch-dashboard.component').then(m => m.BranchDashboardComponent)

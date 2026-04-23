@@ -2,11 +2,71 @@ import { SidebarItem } from '../../models/sidebar-item.model';
 
 export const SIDEBAR_ITEMS: SidebarItem[] = [
   {
+    label: 'نظرة عامة',
+    route: '/app/kpis',
+    icon: 'fa-solid fa-calculator',
+    roles: ['admin']
+  },
+  {
+    label: 'المستخدمون',
+    route: '/main-dashboard/accountant',
+    icon: 'fa-solid fa-calculator',
+    roles: ['admin']
+  },
+  {
+    label: 'المطاعم و الفروع',
+    route: '/main-dashboard/accountant',
+    icon: 'fa-solid fa-calculator',
+    roles: ['admin']
+  },
+  {
+    label: 'الاشتراكات',
+    route: '/main-dashboard/accountant',
+    icon: 'fa-solid fa-calculator',
+    roles: ['admin']
+  },
+  {
+    label: 'اشتراكات الشركات',
+    route: '/main-dashboard/accountant',
+    icon: 'fa-solid fa-calculator',
+    roles: ['admin']
+  },
+  {
+    label: 'الصلاحيات',
+    route: '/main-dashboard/accountant',
+    icon: 'fa-solid fa-calculator',
+    roles: ['admin']
+  },
+  {
+    label: 'مدير التقارير',
+    route: '/main-dashboard/accountant',
+    icon: 'fa-solid fa-calculator',
+    roles: ['admin']
+  },
+  {
+    label: 'سجل النشاطات',
+    route: '/main-dashboard/accountant',
+    icon: 'fa-solid fa-calculator',
+    roles: ['admin']
+  },
+  {
+    label: 'المستخدمون',
+    route: '/main-dashboard/accountant',
+    icon: 'fa-solid fa-calculator',
+    roles: ['admin']
+  },
+  {
+    label: 'اعدادات النظام',
+    route: '/main-dashboard/accountant',
+    icon: 'fa-solid fa-calculator',
+    roles: ['admin']
+  },
+  {
     label: 'الرئيسية',
     route: '/main-dashboard/home',
     icon: 'fa-solid fa-border-all', // أيقونة كمثال
     roles: ['accountant', 'chief_accountant', 'hr_affairs', 'supplier', 'purchasing_manager', 'branch_manager']
-  },
+  }, 
   {
     label: 'المحاسبات',
     route: '/main-dashboard/accountant',

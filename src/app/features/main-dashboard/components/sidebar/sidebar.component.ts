@@ -14,8 +14,8 @@ import { SidebarItem, UserRole } from '../../models/sidebar-item.model';
 export class SidebarComponent implements OnInit {
   allItems = SIDEBAR_ITEMS;
   visibleItems: SidebarItem[] = [];
-  currentRole: UserRole | '' = 'accountant';
-
+  currentRole: UserRole | '' = 'admin';
+ 
   ngOnInit(): void {
     const userData = localStorage.getItem('user');
 

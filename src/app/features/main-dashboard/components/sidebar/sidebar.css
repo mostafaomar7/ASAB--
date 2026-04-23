@@ -1,296 +1,234 @@
-/* الحاوية الرئيسية للسايد بار */
+/* المتغيرات اللونية الأساسية المستوحاة من الصورة */
+:host {
+  --sidebar-bg: #151e32;
+  --sidebar-border: rgba(255, 255, 255, 0.05);
+  --item-hover-bg: rgba(255, 255, 255, 0.04);
+  --item-active-bg: #222e46;
+  --text-muted: #8b9bb4;
+  --text-active: #ffffff;
+  --icon-active: #38bdf8; /* لون الأيقونة الأزرق الفاتح عند التفعيل */
+  --gradient-logo: linear-gradient(135deg, #8b5cf6, #38bdf8);
+}
+
+/* الحاوية الرئيسية */
 .sidebar {
   width: 280px;
-  background-color: #0b0f19; /* الخلفية الداكنة المتماشية مع الكروت */
-  border-left: 1px solid rgba(255, 255, 255, 0.05); /* حد خفيف لفصل السايد بار عن المحتوى في نظام RTL */
-  padding: 30px 0;
+  background-color: var(--sidebar-bg); 
+  border-left: 1px solid var(--sidebar-border); 
   display: flex;
   flex-direction: column;
-  height: 100%;
-  overflow-y: auto; /* السماح بالتمرير إذا زادت العناصر */
-}
-
-/* القائمة (إزالة التنسيق الافتراضي للـ ul) */
-.sidebar-menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px; /* مسافة بين الروابط */
-}
-
-/* عنصر القائمة */
-.sidebar-menu li {
-  margin: 0 15px; /* مسافة من الحواف الجانبية */
-}
-
-/* الرابط الأساسي */
-.sidebar-link {
-  display: block;
-  padding: 14px 20px;
-  color: #a0a6b5; /* لون رمادي هادئ للحالة الافتراضية */
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 500;
-  border-radius: 12px; /* حواف دائرية لزر القائمة */
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-/* تأثير مرور الماوس (Hover) */
-.sidebar-link:hover {
-  background-color: rgba(255, 255, 255, 0.03); /* لون خفيف جداً عند الهوفر */
-  color: #FFFFFF;
-  transform: translateX(-4px); /* حركة بسيطة لليسار متوافقة مع RTL */
-}
-
-/* تأثير الرابط النشط (Active - السحر الخاص بـ routerLinkActive) */
-.sidebar-link.active {
-  background-color: rgba(110, 41, 246, 0.15); /* لونك البنفسجي بشفافية */
-  color: #FFFFFF; /* لون النص أبيض ناصع */
-  font-weight: 700;
-}
-
-/* إضافة خط جانبي يعبر عن الرابط النشط */
-.sidebar-link.active::before {
-  content: '';
-  position: absolute;
-  right: 0; /* لأننا في نظام RTL، الخط سيكون على اليمين */
-  top: 50%;
-  transform: translateY(-50%);
-  height: 60%;
-  width: 4px;
-  background-color: #6E29F6; /* اللون الأساسي الخاص بك */
-  border-radius: 4px 0 0 4px; /* تدوير الحواف من جهة واحدة */
-}
-
-/* شريط تمرير (Scrollbar) مخصص وأنيق للسايد بار */
-.sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover {
-  background: rgba(110, 41, 246, 0.5); /* لونك عند المرور على السكرول */
-}
-/* الحاوية الرئيسية للسايد بار */
-.sidebar {
-  width: 280px;
-  background-color: #0b0f19; 
-  border-left: 1px solid rgba(255, 255, 255, 0.05); 
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  height: 100vh;
   font-family: 'Tajawal', 'Cairo', sans-serif;
+  color: var(--text-muted);
 }
 
-/* 1. منطقة الهيدر (البروفايل) */
+/* منطقة الهيدر واللوجو */
 .sidebar-header {
-  padding: 24px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 24px 20px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: start;
 }
-
-.company-profile {
+.logo-container {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 12px;
-  margin-bottom: 20px;
 }
-
-.company-avatar {
-  width: 45px;
-  height: 45px;
-  background: linear-gradient(135deg, #3b82f6, #0ea5e9);
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+.logo-text {
+  text-align: right;
 }
-
-.company-info h3 {
-  color: #fff;
-  font-size: 15px;
-  margin: 0 0 5px 0;
-}
-
-.status-badge {
-  font-size: 11px;
-  color: #10b981;
-  background: rgba(16, 185, 129, 0.1);
-  padding: 2px 8px;
-  border-radius: 10px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.status-badge .dot {
-  width: 6px; height: 6px;
-  background-color: #10b981;
-  border-radius: 50%;
-}
-
-.user-role-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 12px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.role-text h4 {
-  color: #fff;
-  font-size: 13px;
-  margin: 0 0 4px 0;
-}
-
-.role-text p {
-  color: #a0a6b5;
-  font-size: 11px;
+.logo-text h2 {
   margin: 0;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 800;
+}
+.logo-text span {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--gradient-logo);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+.system-role-pill {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--text-muted);
 }
 
-.role-icon { font-size: 18px; }
+/* تغيير اللغة */
+.lang-switcher-container {
+  padding: 0 20px 20px;
+  border-bottom: 1px solid var(--sidebar-border);
+}
+.lang-switcher {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 4px;
+}
+.lang-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 8px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.lang-btn.active {
+  background-color: white;
+  color: var(--sidebar-bg);
+}
 
-/* 2. منطقة القوائم */
+/* القائمة */
 .sidebar-menu-container {
   flex: 1;
   overflow-y: auto;
   padding: 20px 0;
 }
-
 .sidebar-menu {
   list-style: none;
   padding: 0;
-  margin: 0 0 20px 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
-
 .sidebar-menu li {
   margin: 0 15px;
 }
 
-/* عنوان القسم */
+/* عناوين الأقسام (إن وجدت) */
 .section-title {
-  color: #6b7280;
-  font-size: 11px;
+  color: #5c6b89;
+  font-size: 12px;
   font-weight: bold;
-  padding: 0 20px;
-  margin-bottom: 8px !important;
+  padding: 10px 20px 5px;
 }
 
 /* الرابط الأساسي */
 .sidebar-link {
   display: flex;
-  justify-content: flex-start; /* دي بتجبر المحتوى يبدأ من البداية (اليمين في RTL) */
+  justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
-  color: #a0a6b5; 
+  color: var(--text-muted); 
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
   border-radius: 12px; 
   transition: all 0.3s ease;
-  position: relative;
-  text-align: right; /* محاذاة النص لليمين */
 }
-
 .link-content {
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 100%;
+}
+.link-content .icon {
+  font-size: 18px;
 }
 
-/* تأثير مرور الماوس (Hover) */
+/* تأثيرات الهوفر والتفعيل */
 .sidebar-link:hover {
-  background-color: rgba(255, 255, 255, 0.05); 
+  background-color: var(--item-hover-bg); 
   color: #FFFFFF;
 }
-
-/* تأثير الرابط النشط (Active) باللون الخاص بك */
 .sidebar-link.active {
-  background-color: #6E29F6; /* اللون البنفسجي الصريح كخلفية */
-  color: #FFFFFF; 
-  font-weight: bold;
-  box-shadow: 0 4px 15px rgba(110, 41, 246, 0.4); /* توهج بنفسجي خفيف حول الزر */
+  background-color: var(--item-active-bg); 
+  color: var(--text-active); 
+  font-weight: 700;
+}
+.sidebar-link.active .icon {
+  color: var(--icon-active); /* الأيقونة زرقاء كما في الصورة */
 }
 
-/* هنلغي الخط الجانبي لأننا خلينا الخلفية كلها بنفسجي عشان يكون شكلها أقوى */
-.sidebar-link.active::before {
-  display: none; 
-}
-
-/* 3. الإشعار الأحمر (Badge) */
+/* الإشعارات (Badges) */
 .badge {
-  background-color: #ef4444; /* لون أحمر للإشعار */
-  color: white;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: bold;
-  min-width: 20px;
-  height: 20px;
+  color: white;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  padding: 0 6px;
-  box-shadow: 0 2px 5px rgba(239, 68, 68, 0.4);
+  border-radius: 50%;
 }
+.badge.red { background-color: #ef4444; }
+.badge.orange { background-color: #f59e0b; }
 
-/* 4. منطقة الفوتر (تسجيل الخروج) */
+/* الفوتر (الملف الشخصي) */
 .sidebar-footer {
-  padding: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 15px 20px;
+  border-top: 1px solid var(--sidebar-border);
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  gap: 10px;
 }
-
-.footer-btn {
+.logout-btn {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #a0a6b5;
-  padding: 10px;
-  border-radius: 10px;
+  border: none;
+  color: var(--text-muted);
+  font-size: 18px;
   cursor: pointer;
-  flex: 1;
+  transition: color 0.3s;
+}
+.logout-btn:hover {
+  color: #ef4444;
+}
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.user-details {
+  text-align: right;
+}
+.user-name {
+  display: block;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+.user-role {
+  display: block;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  background: #8b5cf6; /* لون مقارب للصورة */
+  color: white;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  font-size: 13px;
-  transition: all 0.3s;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
 }
 
-.footer-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
-}
-
-.logout-btn:hover {
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
-  border-color: rgba(239, 68, 68, 0.3);
-}
-
-/* Scrollbar */
+/* شريط التمرير */
 .sidebar-menu-container::-webkit-scrollbar { width: 4px; }
 .sidebar-menu-container::-webkit-scrollbar-track { background: transparent; }
 .sidebar-menu-container::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
-.sidebar-menu-container::-webkit-scrollbar-thumb:hover { background: rgba(110, 41, 246, 0.5); }
+.sidebar-menu-container::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }

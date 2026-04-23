@@ -1,0 +1,391 @@
+/* إعدادات أساسية لضبط اتجاه اللغة العربية */
+:host {
+  display: block;
+  direction: rtl; 
+  font-family: 'Tajawal', 'Cairo', sans-serif; /* الخطوط الموصى بها للتصميم العربي */
+}
+
+/* شبكة توزيع البطاقات (متجاوبة مع الشاشات) */
+.kpis-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+/* التنسيق الأساسي للبطاقة */
+.kpi-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #eef0f4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+  
+  /* إعدادات الأنيميشن (هاديء وبسيط) */
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+              box-shadow 0.4s ease, 
+              border-color 0.4s ease;
+              
+  /* حركة الدخول عند التحميل */
+  animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+/* تأخير حركة الدخول لكل بطاقة لتعطي تأثير تسلسلي جميل */
+.kpi-card:nth-child(1) { animation-delay: 0.1s; }
+.kpi-card:nth-child(2) { animation-delay: 0.2s; }
+.kpi-card:nth-child(3) { animation-delay: 0.3s; }
+.kpi-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* تأثير التحويم (Hover) باستخدام اللون الأساسي #6E29F6 
+  الظل تم تخفيفه ليكون 12% فقط ليعطي إحساس هاديء
+*/
+.kpi-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(110, 41, 246, 0.12);
+  border-color: rgba(110, 41, 246, 0.3);
+}
+
+/* الخطوط العلوية الملونة للبطاقات (مثل الصورة) */
+.card-primary { border-top: 3px solid #6E29F6; }
+.card-blue    { border-top: 3px solid #0d6efd; }
+.card-green   { border-top: 3px solid #20c997; }
+.card-orange  { border-top: 3px solid #fd7e14; }
+
+/* نصوص البطاقة */
+.kpi-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.kpi-title {
+  font-size: 0.95rem;
+  color: #6c757d;
+  margin: 0;
+  font-weight: 600;
+}
+
+.kpi-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2b2b2b;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.kpi-value .divider {
+  font-size: 1.2rem;
+  color: #adb5bd;
+  font-weight: 400;
+}
+
+.kpi-subtitle {
+  font-size: 0.8rem;
+  color: #a0a5aa;
+  margin: 0;
+}
+
+/* الأيقونات */
+.kpi-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* ألوان الأيقونات */
+.icon-primary {
+  background-color: #6E29F6;
+  color: #ffffff;
+  /* ظل داخلي خفيف للأيقونة الأساسية */
+  box-shadow: 0 4px 10px rgba(110, 41, 246, 0.25);
+}
+
+.icon-blue   { background-color: #f0f6ff; color: #0d6efd; }
+.icon-green  { background-color: #eafbf5; color: #20c997; }
+.icon-orange { background-color: #fff6ed; color: #fd7e14; }
+
+/* أنيميشن الظهور (Fade Up) */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+:host {
+  display: block;
+  direction: rtl;
+  font-family: 'Tajawal', 'Cairo', sans-serif;
+}
+
+/* تخطيط الشبكة الرئيسي للقسمين */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 992px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr; /* يتحول لعمود واحد في الشاشات الصغيرة */
+  }
+}
+
+.layout-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* التنسيق المشترك للوحات (Panels) */
+.panel-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #eef0f4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.panel-tall {
+  height: 100%; /* ليأخذ الطول بالكامل في العمود الأيسر */
+}
+
+/* ترويسة اللوحات */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.panel-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2b2b2b;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-alert { color: #495057; font-size: 1rem; }
+
+/* استخدام اللون الأساسي في الروابط */
+.link-primary {
+  color: #6E29F6;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.link-primary:hover {
+  color: #551cc0;
+  text-decoration: underline;
+}
+
+/* --- 1. الإجراءات السريعة --- */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.action-btn {
+  background: #ffffff;
+  border: 1px solid #eef0f4;
+  border-radius: 10px;
+  padding: 1.5rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-btn span {
+  font-size: 0.85rem;
+  color: #495057;
+  font-weight: 600;
+}
+
+.icon-action {
+  font-size: 1.5rem;
+  color: #6c757d;
+  transition: color 0.3s ease;
+}
+
+/* تأثير الـ Hover على الإجراءات السريعة باستخدام اللون الأساسي */
+.action-btn:hover {
+  border-color: rgba(110, 41, 246, 0.4);
+  box-shadow: 0 6px 15px rgba(110, 41, 246, 0.08);
+  transform: translateY(-3px);
+}
+.action-btn:hover .icon-action, 
+.action-btn:hover span {
+  color: #6E29F6;
+}
+
+/* --- 2. تنبيهات الاشتراكات --- */
+.alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.alert-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #eef0f4;
+}
+
+.alert-warning { border-color: #ffe8b3; background-color: #fffdf7; }
+.alert-danger { border-color: #ffcdd2; background-color: #fffafa; }
+
+.alert-details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.bg-purple { background-color: #6E29F6; }
+.bg-orange { background-color: #fd7e14; }
+.bg-red    { background-color: #dc3545; }
+.bg-green  { background-color: #198754; }
+
+.alert-text h4 { margin: 0; font-size: 0.95rem; color: #2b2b2b; }
+.alert-text p { margin: 0; font-size: 0.8rem; margin-top: 0.2rem; }
+
+.text-orange { color: #fd7e14; }
+.text-red { color: #dc3545; }
+
+/* أزرار التنبيهات */
+.btn-outline {
+  background: transparent;
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 0.4rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-solid {
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+}
+
+.btn-warning { border-color: #ffc107; color: #b08200; }
+.btn-warning:hover { background-color: #ffc107; color: #fff; }
+
+.btn-danger { background-color: #dc3545; }
+.btn-danger:hover { background-color: #c82333; }
+
+/* --- 3. هيكل العلامات التجارية --- */
+.hierarchy-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.hierarchy-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid #f1f3f5;
+  transition: background-color 0.2s ease;
+}
+
+.hierarchy-item:last-child {
+  border-bottom: none;
+}
+
+/* Hover ناعم لعناصر القائمة */
+.hierarchy-item:hover {
+  background-color: #fcfbfe; /* لون بنفسجي فاتح جداً */
+  border-radius: 8px;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.h-main {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.h-text h4 { margin: 0; font-size: 0.95rem; color: #2b2b2b; }
+.h-text p { margin: 0; font-size: 0.8rem; color: #868e96; margin-top: 0.3rem; }
+
+.h-status {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* البادجات (Badges) */
+.badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.badge-green { background-color: #eafbf5; color: #20c997; }
+.badge-warning { background-color: #fff8e5; color: #ffb822; }
+.badge-danger { background-color: #ffeeee; color: #dc3545; }
+
+.chevron-icon {
+  color: #ced4da;
+  font-size: 0.8rem;
+}
+
+/* --- الأنيميشن --- */
+@keyframes slideUpFade {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-1 { animation: slideUpFade 0.6s ease forwards 0.1s; opacity: 0; }
+.fade-in-2 { animation: slideUpFade 0.6s ease forwards 0.3s; opacity: 0; }
+.fade-in-3 { animation: slideUpFade 0.6s ease forwards 0.2s; opacity: 0; }

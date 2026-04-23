@@ -1,18 +1,52 @@
 <aside class="sidebar" dir="rtl">
+  
   <div class="sidebar-header">
+    <div class="logo-container">
+      <div class="logo-icon">ع</div>
+      <div class="logo-text">
+        <h2>عصب</h2>
+        <span>ASAB System</span>
+      </div>
     </div>
+    <div class="system-role-pill">أدمن النظام</div>
+  </div>
+
+  <div class="lang-switcher-container">
+    <div class="lang-switcher">
+      <button class="lang-btn">EN</button>
+      <button class="lang-btn active">عربي</button>
+    </div>
+  </div>
 
   <div class="sidebar-menu-container">
     <ul class="sidebar-menu">
+      
       <li *ngFor="let item of visibleItems">
         <a [routerLink]="item.route" routerLinkActive="active" class="sidebar-link">
           <div class="link-content">
             <span class="icon" *ngIf="item.icon" [class]="item.icon"></span> 
             <span class="text">{{ item.label }}</span>
           </div>
+          
+          <span class="badge" *ngIf="item.badge" [ngClass]="item.badgeColor">
+            {{ item.badge }}
+          </span>
         </a>
       </li>
+
     </ul> 
   </div>
   
-  </aside>
+  <div class="sidebar-footer">
+    <button class="logout-btn">
+      <i class="fas fa-sign-out-alt"></i> </button>
+    <div class="user-info">
+      <div class="user-details">
+        <span class="user-name">عبدالله الأحمد</span>
+        <span class="user-role">أدمن النظام</span>
+      </div>
+      <div class="user-avatar">عب</div>
+    </div>
+  </div>
+
+</aside>

@@ -1,14 +1,12 @@
 .dashboard-layout {
   display: flex;
   height: 100vh; /* ملء الشاشة بالكامل */
-  background-color: #050810; /* خلفية داكنة جداً للمحتوى الأساسي */
   overflow: hidden; /* لمنع ظهور سكرول في الصفحة بالكامل */
   direction: rtl; /* ضمان اتجاه التخطيط من اليمين لليسار */
 }
 
 .dashboard-content {
   flex: 1; /* أخذ باقي المساحة المتاحة بعد السايد بار */
-  padding: 30px;
   overflow-y: auto; /* السماح بعمل سكرول للمحتوى فقط إذا كان طويلاً */
   position: relative;
 }

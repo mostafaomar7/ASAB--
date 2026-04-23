@@ -1,4 +1,5 @@
 export type UserRole =
+  |'admin'
   | 'accountant'
   | 'chief_accountant'
   | 'hr_affairs'
@@ -11,5 +12,6 @@ export interface SidebarItem {
   route: string;
   roles: UserRole[];
   icon?: string;   // إضافة الأيقونة
-  badge?: number;  // إضافة رقم الإشعار (اختياري)
+  badge?: string | number; // رقم الإشعار مثل '3'
+  badgeColor?: 'red' | 'orange'; // إضافة رقم الإشعار (اختياري)
 }
