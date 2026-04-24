@@ -1,0 +1,67 @@
+<div class="page-container" dir="rtl">
+  
+  <div class="page-header">
+    <div class="title-area">
+      <h1>سجل النشاطات</h1>
+      <p>{{ activities().length }} نشاط مسجل</p>
+    </div>
+    <button class="btn-export" (click)="exportToExcel()">
+      <span class="icon">📄</span> تصدير Excel
+    </button>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-group">
+      <label>بحث بالمستخدم</label>
+      <div class="input-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="اسم المستخدم...">
+      </div>
+    </div>
+    
+    <div class="filter-group">
+      <label>نوع النشاط</label>
+      <select>
+        <option>الكل</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label>التاريخ</label>
+      <select>
+        <option>الكل</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="list-card">
+    <div class="list-header">
+      <h3>النشاطات</h3>
+      <span class="count-badge">{{ activities().length }} نشاط</span>
+    </div>
+
+    <div class="activity-list">
+      @for (activity of activities(); track activity.id) {
+        <div class="activity-row">
+          
+          <div class="activity-main">
+            <div class="icon-box" [ngClass]="activity.iconClass">
+              {{ activity.icon }}
+            </div>
+            <div class="activity-details">
+              <span class="title">{{ activity.title }}</span>
+              <span class="subtitle">{{ activity.subtitle }}</span>
+            </div>
+          </div>
+
+          <div class="activity-meta">
+            <span class="tag-badge">{{ activity.tag }}</span>
+            <span class="time">{{ activity.time }}</span>
+          </div>
+
+        </div>
+      }
+    </div>
+  </div>
+
+</div>

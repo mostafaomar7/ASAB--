@@ -1,0 +1,160 @@
+<div class="page-container" dir="rtl">
+  
+  <header class="page-header">
+    <div class="title-area">
+      <h1>اشتراكات الشركات — بوابة المجموعات</h1>
+      <p>6 شركة مسجلة • 3 نشطة • إيراد شهري 24K ر.س</p>
+    </div>
+    <button class="btn-primary" (click)="openAddModal()">
+      + إضافة شركة جديدة
+    </button>
+  </header>
+
+  <div class="stats-grid">
+    @for (stat of stats(); track stat.title) {
+      <div class="stat-card">
+        <div class="stat-info">
+          <h3>{{ stat.title }}</h3>
+          <h2>{{ stat.value }}</h2>
+          <p>{{ stat.subtitle }}</p>
+        </div>
+        <div class="stat-icon" [ngClass]="stat.iconClass">
+          {{ stat.icon }}
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="filters-bar">
+    <div class="search-box">
+      <span class="icon-search">🔍</span>
+      <input type="text" placeholder="بحث بالشركة أو المسؤول أو المدينة...">
+    </div>
+    <div class="tabs-group">
+      @for (filter of filters; track filter) {
+        <button class="tab-btn" [class.active]="activeFilter() === filter" (click)="activeFilter.set(filter)">
+          {{ filter }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="list-container">
+    <div class="list-header">
+      <h4>قائمة الشركات المشتركة في بوابة المجموعات</h4>
+      <span>6 شركة</span>
+    </div>
+
+    <div class="companies-list">
+      @for (company of companies(); track company.id) {
+        <div class="company-row">
+          
+          <div class="col-main">
+            <div class="avatar" [ngClass]="company.avatarBg">{{ company.avatar }}</div>
+            <div class="info">
+              <div class="title-row">
+                <span class="company-name">{{ company.name }}</span>
+                <span class="badge" [ngClass]="company.planClass">{{ company.plan }}</span>
+                <span class="badge" [ngClass]="company.statusClass">{{ company.status }}</span>
+              </div>
+              <div class="subtitle-row">
+                <span>{{ company.manager }} - {{ company.location }}</span>
+                <span class="dot">•</span>
+                <span>{{ company.details }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-progress">
+            <div class="progress-labels">
+              <span class="lbl">الفروع</span>
+              <span class="val">{{ company.branchesUsed }}/{{ company.branchesTotal }}</span>
+            </div>
+            <div class="progress-bar">
+              <div class="fill" [style.width]="getProgressWidth(company.branchesUsed, company.branchesTotal)"
+                   [ngClass]="company.branchesUsed === company.branchesTotal ? 'fill-full' : 'fill-normal'"></div>
+            </div>
+            <span class="expiry-date">تنتهي: {{ company.expiry }}</span>
+          </div>
+
+          <div class="col-actions">
+            <div class="revenue">
+              <strong>{{ company.revenue }} ر.س</strong>
+              <span>سنوياً</span>
+            </div>
+            <div class="action-btns">
+              <button class="btn-action" [ngClass]="company.actionClass">{{ company.actionText }}</button>
+              <button class="btn-icon">👁️</button>
+            </div>
+          </div>
+
+        </div>
+      }
+    </div>
+  </div>
+
+</div>
+
+@if (isModalOpen()) {
+  <div class="modal-backdrop" (click)="closeModal()">
+    <div class="modal-box" (click)="$event.stopPropagation()">
+      
+      <div class="modal-header">
+        <div>
+          <h2>إضافة شركة جديدة</h2>
+          <p>منح حساب بوابة المجموعات</p>
+        </div>
+        <button class="close-btn" (click)="closeModal()">✖</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label>اسم الشركة</label>
+          <input type="text" placeholder="مجموعة ...">
+        </div>
+        <div class="form-group">
+          <label>اسم المسؤول</label>
+          <input type="text" placeholder="">
+        </div>
+        <div class="form-group">
+          <label>البريد الإلكتروني (أدمن الشركة)</label>
+          <input type="email" placeholder="admin@company.sa" dir="ltr" style="text-align: right;">
+        </div>
+        <div class="form-group">
+          <label>رقم الجوال</label>
+          <input type="tel" placeholder="">
+        </div>
+
+        <div class="form-group">
+          <label>الخطة</label>
+          <div class="plans-grid">
+            <div class="plan-card" [class.selected]="selectedPlan() === 'أساسي'" (click)="selectPlan('أساسي')">
+              <h4>أساسي</h4>
+              <p>1,990 ر.س</p>
+            </div>
+            <div class="plan-card" [class.selected]="selectedPlan() === 'احترافي'" (click)="selectPlan('احترافي')">
+              <h4>احترافي</h4>
+              <p>4,800 ر.س</p>
+            </div>
+            <div class="plan-card" [class.selected]="selectedPlan() === 'مؤسسي'" (click)="selectPlan('مؤسسي')">
+              <h4>مؤسسي</h4>
+              <p>12,000 ر.س</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-alert">
+          سيتم إنشاء حساب أدمن الشركة وإرسال بيانات الدخول على البريد الإلكتروني تلقائياً.
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-cancel" (click)="closeModal()">إلغاء</button>
+        <button class="btn-submit">
+          <span class="icon">🚀</span> إنشاء الحساب
+        </button>
+      </div>
+
+    </div>
+  </div>
+}

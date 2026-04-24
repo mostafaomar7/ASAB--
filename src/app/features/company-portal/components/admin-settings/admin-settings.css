@@ -1,0 +1,130 @@
+/* الإعدادات العامة للصفحة */
+.settings-page {
+  padding: 32px;
+  background-color: #f4f6fa;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1f2937;
+}
+
+.page-header {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: flex-end; /* عشان العنوان يروح يمين زي الصورة */
+}
+
+.page-header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ---------------- شبكة الكروت ---------------- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* كارتين في كل صف */
+  gap: 24px;
+}
+
+.settings-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+}
+
+/* ---------------- هيدر الكارت ---------------- */
+.card-header {
+  border-bottom: 1px solid #f3f4f6;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  /* مسحنا flex-end لأن الـ RTL بيحاذي لليمين تلقائي */
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* مسحنا row-reverse عشان الأيقونة تيجي يمين العنوان بشكل طبيعي */
+}
+
+.icon {
+  font-size: 18px;
+}
+
+/* ---------------- صفوف الإعدادات ---------------- */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.setting-row {
+  display: flex;
+  justify-content: space-between; /* ده اللي هيخلي النص يمين والتوجل شمال في الـ RTL */
+  align-items: center;
+  /* مسحنا flex-direction: row-reverse خالص */
+}
+
+.setting-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* ============================================== */
+/* -------------- تصميم التوجل سويتش -------------- */
+/* ============================================== */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+}
+
+/* إخفاء الـ Checkbox الأساسي */
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* مسار التوجل (الخلفية) */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e5e7eb; /* لون رمادي وهو مطفي */
+  border-radius: 24px;
+  transition: 0.3s;
+}
+
+/* الدائرة البيضا اللي بتتحرك */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px; /* تبدأ من الشمال وهي مطفية */
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* لما يكون الـ Checkbox شغال (Checked) */
+input:checked + .slider {
+  background-color: #8b5cf6;
+}
+
+/* حركة الدائرة لما يشتغل */
+input:checked + .slider:before {
+  transform: translateX(22px); /* تتحرك ناحية اليمين لما السويتش يشتغل */
+}

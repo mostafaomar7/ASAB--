@@ -1,0 +1,39 @@
+<div class="settings-page" dir="rtl">
+  
+  <div class="page-header">
+    <h1>إعدادات النظام</h1>
+  </div>
+
+  <div class="cards-grid">
+    @for (category of settings(); track category.title; let cIdx = $index) {
+      <div class="settings-card">
+        
+        <div class="card-header">
+          <h3>
+            <span class="icon">{{ category.icon }}</span> 
+            {{ category.title }}
+          </h3>
+        </div>
+
+        <div class="card-body">
+          @for (item of category.items; track item.id; let iIdx = $index) {
+            <div class="setting-row">
+              <span class="setting-label">{{ item.label }}</span>
+              
+              <label class="toggle-switch">
+                <input 
+                  type="checkbox" 
+                  [checked]="item.isActive" 
+                  (change)="toggleSetting(cIdx, iIdx)"
+                >
+                <span class="slider"></span>
+              </label>
+            </div>
+          }
+        </div>
+        
+      </div>
+    }
+  </div>
+
+</div>

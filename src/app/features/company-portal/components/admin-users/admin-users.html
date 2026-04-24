@@ -1,0 +1,155 @@
+<div class="page-container" dir="rtl">
+  
+  <header class="page-header">
+    <div class="header-top">
+      <div class="title-section">
+        <h1>إدارة المستخدمين</h1>
+        <p class="subtitle">7 مستخدم — متعدد العلامات التجارية والمطاعم</p>
+      </div>
+      <div class="actions-section">
+        <button class="btn-outline" (click)="triggerCsvUpload()">
+          <span class="icon">↑</span> استيراد CSV
+        </button>
+        <button class="btn-primary" (click)="openAddUserModal()">
+          + مستخدم جديد
+        </button>
+
+        <input 
+          type="file" 
+          #csvInput 
+          style="display: none" 
+          accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+          (change)="onFileSelected($event)"
+        />
+      </div>
+    </div>
+
+    <div class="tabs-container">
+      <div class="tab" [class.active]="activeTab() === 'users'" (click)="activeTab.set('users')">
+        👤 قائمة المستخدمين
+      </div>
+      <div class="tab" [class.active]="activeTab() === 'restaurants'" (click)="activeTab.set('restaurants')">
+        🏢 توزيع المطاعم
+      </div>
+    </div>
+  </header>
+
+  <section class="stats-grid">
+    @for (stat of stats(); track stat.title) {
+      <div class="stat-card">
+        <h2 [ngClass]="stat.colorClass">{{ stat.count }}</h2>
+        <p>{{ stat.title }}</p>
+      </div>
+    }
+  </section>
+
+  <section class="list-section">
+    <div class="list-header">
+      <h3>قائمة المستخدمين</h3>
+      
+      <div class="filters">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="بحث بالاسم...">
+        </div>
+        <select class="filter-select">
+          <option>جميع الأدوار</option>
+        </select>
+        <select class="filter-select">
+          <option>جميع العلامات</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="users-list">
+      @for (user of users(); track user.id) {
+        <div class="user-row">
+          
+          <div class="user-info">
+            <div class="avatar" [ngClass]="user.avatarColor">{{ user.initial }}</div>
+            <div class="details">
+              <div class="name-tags">
+                <span class="name">{{ user.name }}</span>
+                <div class="tags">
+                  @for (tag of user.tags; track tag.label) {
+                    <span class="badge" [ngClass]="tag.type">{{ tag.label }}</span>
+                  }
+                </div>
+              </div>
+              <div class="contact">
+                <span>{{ user.email }}</span>
+                <span class="dot">•</span>
+                <span>{{ user.phone }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="user-brands">
+            <div class="brand-info">
+              <span class="brand-label">العلامات التجارية</span>
+              <span class="brand-names">{{ user.brands }}</span>
+            </div>
+            <button class="expand-btn">⌄</button>
+          </div>
+
+        </div>
+      }
+    </div>
+  </section>
+
+</div>
+
+@if (isModalOpen()) {
+  <div class="modal-backdrop" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      
+      <div class="modal-header">
+        <div>
+          <h2>إضافة مستخدم جديد</h2>
+          <p>الخطوة {{ currentStep() }} من 3</p>
+        </div>
+        <button class="close-btn" (click)="closeModal()">✖</button>
+      </div>
+
+      <div class="stepper">
+        <div class="step" [class.active]="currentStep() >= 1">1. المعلومات الأساسية</div>
+        <div class="line"></div>
+        <div class="step" [class.active]="currentStep() >= 2">2. التخصيص والنطاق</div>
+        <div class="line"></div>
+        <div class="step" [class.active]="currentStep() >= 3">3. الموديولات والتسلسل</div>
+      </div>
+
+      <div class="step-content">
+        @switch (currentStep()) {
+          @case (1) {
+            <div class="form-group">
+              <label>الاسم الكامل *</label>
+              <input type="text" placeholder="أحمد محمد السعد">
+            </div>
+          }
+          @case (2) {
+            <p>محتوى الخطوة التانية (اختيار العلامات التجارية)</p>
+          }
+          @case (3) {
+            <p>محتوى الخطوة التالتة (الموديولات والملخص)</p>
+          }
+        }
+      </div>
+
+      <div class="modal-footer">
+        @if (currentStep() > 1) {
+          <button class="btn-outline" (click)="prevStep()">السابق</button>
+        } @else {
+          <button class="btn-outline" (click)="closeModal()">إلغاء</button>
+        }
+
+        @if (currentStep() < 3) {
+          <button class="btn-primary" (click)="nextStep()">التالي</button>
+        } @else {
+          <button class="btn-primary" (click)="closeModal()">إضافة المستخدم</button>
+        }
+      </div>
+
+    </div>
+  </div>
+}

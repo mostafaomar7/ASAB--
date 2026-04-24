@@ -1,0 +1,70 @@
+<div class="page-wrapper" dir="rtl">
+  
+  <header class="matrix-header">
+    <div class="header-content">
+      <div class="title-area">
+        <h1>مصفوفة الصلاحيات</h1>
+        <p>صلاحيات الأدوار — للتعديل فعّل وضع التحرير</p>
+      </div>
+      
+      <div class="legend-area">
+        <span class="legend-label">الصلاحيات:</span>
+        <span class="badge view">عرض</span>
+        <span class="badge insert">إدخال</span>
+        <span class="badge review">مراجعة</span>
+        <span class="badge approve">اعتماد</span>
+        <span class="badge final">نهائي</span>
+      </div>
+    </div>
+
+    <div class="actions-area">
+      <button class="btn-outline">
+        <span class="icon">⧉</span> نسخ دور
+      </button>
+      <button class="btn-primary" (click)="isEditMode.set(!isEditMode())">
+        <span class="icon">✎</span> تعديل الصلاحيات
+      </button>
+    </div>
+  </header>
+
+  <div class="matrix-card">
+    
+    <div class="matrix-grid matrix-head">
+      <div class="grid-cell module-title">الموديول</div>
+      @for (role of roles(); track role.id) {
+        <div class="grid-cell role-header">
+          <strong>{{ role.name }}</strong>
+          <span>{{ role.subtitle }}</span>
+        </div>
+      }
+    </div>
+
+    <div class="matrix-body">
+      @for (row of matrixData(); track row.name) {
+        <div class="matrix-grid matrix-row">
+          <div class="grid-cell module-name">{{ row.name }}</div>
+          
+          @for (role of roles(); track role.id) {
+            <div class="grid-cell">
+              <span class="badge" [ngClass]="row.permissions[role.id]">
+                {{ getPermissionLabel(row.permissions[role.id]) }}
+              </span>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+  </div>
+
+  <div class="info-footer">
+    <h4>ملاحظة حول نطاق الوصول</h4>
+    <ul>
+      <li>المحاسب: يرى فقط المطاعم والعلامات التجارية المخصصة له في إعدادات حسابه</li>
+      <li>رئيس الحسابات: يرى كل المحاسبين ضمن العلامات التجارية المخصصة له</li>
+      <li>مدير المشتريات: يرى طلبات الشراء لجميع الفروع ضمن علاماته التجارية</li>
+      <li>مدير الفرع: يرى فقط فرعه المخصص ولا يتجاوزه</li>
+    </ul>
+  </div>
+
+</div>

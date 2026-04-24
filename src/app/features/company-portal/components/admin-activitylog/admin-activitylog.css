@@ -1,0 +1,222 @@
+/* ================== الإعدادات العامة ================== */
+.page-container {
+  padding: 32px;
+  background-color: #f8fafc; /* لون الخلفية رمادي فاتح جداً */
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1f2937;
+}
+
+/* ================== الهيدر ================== */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.title-area h1 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.title-area p {
+  color: #9ca3af;
+  font-size: 13px;
+  margin: 0;
+}
+
+.btn-export {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-export:hover {
+  background-color: #dcfce7;
+}
+
+/* ================== كارت الفلاتر ================== */
+.filter-card {
+  background-color: white;
+  padding: 20px 24px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  border: 1px solid #f1f5f9;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 أعمدة متساوية */
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.filter-group input, 
+.filter-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #334155;
+  outline: none;
+  background-color: white;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  padding-right: 36px; /* عشان نسيب مساحة للأيقونة في اليمين */
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* ================== كارت النشاطات ================== */
+.list-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  border: 1px solid #f1f5f9;
+  overflow: hidden;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #f1f5f9;
+  background-color: #fafbfc;
+}
+
+.list-header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.count-badge {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* ---------------- صفوف النشاطات ---------------- */
+.activity-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-row {
+  display: flex;
+  justify-content: space-between; /* بيفصل الجزء اليمين عن الشمال بشكل مثالي في RTL */
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f8fafc;
+  transition: background-color 0.2s;
+}
+
+.activity-row:hover {
+  background-color: #f8fafc;
+}
+
+.activity-row:last-child {
+  border-bottom: none;
+}
+
+/* الجزء اليمين */
+.activity-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+/* ألوان الأيقونات */
+.icon-purple { background-color: #f3e8ff; color: #9333ea; }
+.icon-green { background-color: #dcfce7; color: #16a34a; }
+.icon-blue { background-color: #eff6ff; color: #2563eb; }
+.icon-red { background-color: #fee2e2; color: #dc2626; }
+.icon-gray { background-color: #f1f5f9; color: #475569; }
+.icon-orange { background-color: #ffedd5; color: #ea580c; }
+.icon-yellow { background-color: #fef9c3; color: #ca8a04; }
+.icon-teal { background-color: #ccfbf1; color: #0d9488; }
+
+.activity-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.activity-details .title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.activity-details .subtitle {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* الجزء الشمال */
+.activity-meta {
+  display: flex;
+  align-items: center;
+  gap: 32px; /* مسافة بين التاج والوقت */
+}
+
+.tag-badge {
+  background-color: #f1f5f9;
+  color: #64748b;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  min-width: 60px;
+  text-align: center;
+}
+
+.time {
+  font-size: 12px;
+  color: #94a3b8;
+  min-width: 70px;
+  text-align: left; /* عشان نضمن إن الأرقام تبقى مظبوطة على الحرف الشمال */
+}

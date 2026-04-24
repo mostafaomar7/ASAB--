@@ -1,0 +1,76 @@
+<div class="page-container" dir="rtl">
+  
+  <div class="page-header">
+    <div class="title-area">
+      <h1>إدارة الاشتراكات</h1>
+      <p>4 علامة تجارية · 15 مطعم · 30 فرع</p>
+    </div>
+    <button class="btn-primary">
+      + اشتراك جديد
+    </button>
+  </div>
+
+  <div class="stats-grid">
+    @for (stat of stats(); track stat.title) {
+      <div class="stat-card">
+        <div class="stat-icon" [ngClass]="stat.iconClass">
+          {{ stat.icon }}
+        </div>
+        <div class="stat-info">
+          <p>{{ stat.title }}</p>
+          <h2>{{ stat.value }}</h2>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="subscribers-list">
+    @for (sub of subscribers(); track sub.id) {
+      <div class="sub-card" [ngClass]="sub.cardBorderClass">
+        
+        <div class="col-right">
+          <div class="avatar" [ngClass]="sub.avatarBg">{{ sub.avatar }}</div>
+          <div class="info">
+            <div class="title-row">
+              <span class="sub-name">{{ sub.name }}</span>
+              <span class="badge" [ngClass]="sub.planClass">{{ sub.plan }}</span>
+              <span class="badge" [ngClass]="sub.statusClass">{{ sub.status }}</span>
+            </div>
+            <p class="sub-details">{{ sub.details }}</p>
+          </div>
+        </div>
+
+        <div class="col-left">
+          
+          <div class="expiry-info">
+            <div class="date-row">
+              <span class="date-text">تاريخ الانتهاء: {{ sub.expiryDate }}</span>
+              <span class="days-left" [ngClass]="sub.daysLeftClass">{{ sub.daysLeft }}</span>
+            </div>
+            @if (sub.showProgress) {
+              <div class="progress-bar">
+                <div class="fill" [ngClass]="sub.progressClass" [style.width.%]="sub.progress"></div>
+              </div>
+            }
+          </div>
+
+          <div class="auto-renew">
+            <span>تذكير تلقائي</span>
+            <label class="toggle-switch">
+              <input type="checkbox" [checked]="sub.autoRenew" (change)="toggleAutoRenew(sub.id)">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <button class="btn-action" [ngClass]="sub.actionClass">
+            {{ sub.actionText }}
+          </button>
+
+          <button class="btn-chevron">⌄</button>
+        </div>
+
+      </div>
+    }
+  </div>
+
+</div>

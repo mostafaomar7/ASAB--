@@ -1,0 +1,448 @@
+/* الإعدادات العامة للصفحة */
+.page-container {
+  background-color: #f4f6fa; /* لون الخلفية الفاتح */
+  min-height: 100vh;
+  padding: 32px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* يفضل استخدام خط المشروع زي Cairo أو Tajawal */
+  color: #1f2937;
+}
+
+/* ---------------- HEADER ---------------- */
+.page-header {
+  margin-bottom: 24px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.title-section h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.title-section .subtitle {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* الأزرار */
+.actions-section {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-primary {
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-outline {
+  background-color: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---------------- TABS ---------------- */
+.tabs-container {
+  display: flex;
+  gap: 32px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.tab {
+  padding: 12px 0;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  color: #6b7280;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tab.active {
+  color: #8b5cf6;
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #8b5cf6;
+}
+
+/* ---------------- STATS GRID ---------------- */
+.stats-grid {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: white;
+  flex: 1;
+  padding: 24px 16px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.stat-card h2 {
+  font-size: 28px;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+}
+
+.stat-card p {
+  color: #6b7280;
+  font-size: 13px;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ألوان الأرقام في الكروت */
+.text-blue { color: #3b82f6; }
+.text-orange { color: #f97316; }
+.text-teal { color: #14b8a6; }
+.text-purple { color: #8b5cf6; }
+.text-red { color: #ef4444; }
+
+/* ---------------- LIST SECTION ---------------- */
+.list-section {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.list-header h3 {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.filters {
+  display: flex;
+  flex-direction: row-reverse; /* لعكس الترتيب زي الصورة */
+  gap: 12px;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-box input {
+  padding: 10px 36px 10px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  width: 200px;
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.filter-select {
+  padding: 10px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #374151;
+  background-color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ---------------- USER ROW ---------------- */
+.users-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.user-row:last-child {
+  border-bottom: none;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.bg-gradient-blue { background: linear-gradient(135deg, #60a5fa, #3b82f6); }
+.bg-gradient-purple { background: linear-gradient(135deg, #a78bfa, #8b5cf6); }
+.bg-gradient-cyan { background: linear-gradient(135deg, #2dd4bf, #06b6d4); }
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.name-tags {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* تخصيص ألوان البادجات */
+.status-active { background-color: #dcfce7; color: #16a34a; }
+.role-blue { background-color: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+.role-blue-light { background-color: #f0fdfa; color: #0d9488; }
+.role-orange { background-color: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; }
+.role-purple { background-color: #faf5ff; color: #9333ea; border: 1px solid #e9d5ff; }
+
+.contact {
+  color: #6b7280;
+  font-size: 13px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.dot {
+  font-size: 10px;
+  color: #d1d5db;
+}
+
+.user-brands {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.brand-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.brand-label {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.brand-names {
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.expand-btn {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+}
+/* ============================================== */
+/* ------------ MODAL OVERLAY STYLES ------------ */
+/* ============================================== */
+
+/* خلفية المودال (الطبقة الشفافة اللي بتغطي الصفحة) */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* لون أسود شفاف */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* رقم كبير عشان يضمن إنه يظهر فوق أي حاجة في الصفحة */
+  direction: rtl;
+}
+
+/* صندوق الفورم نفسه */
+.modal-content {
+  background: white;
+  width: 800px;
+  max-width: 90%;
+  max-height: 90vh; /* عشان لو المحتوى طويل يعمل سكرول جوا الفورم مش في الصفحة */
+  overflow-y: auto;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* هيدر الفورم */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 16px;
+}
+
+.modal-header h2 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.modal-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #ef4444; /* يحمر لما تقف عليه */
+}
+
+/* ---------------- الـ Stepper (الخطوات) ---------------- */
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.step {
+  background: #f3f4f6;
+  color: #9ca3af;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.step.active {
+  background: #8b5cf6;
+  color: white;
+}
+
+.line {
+  flex-grow: 1;
+  height: 2px;
+  background: #e5e7eb;
+  margin: 0 16px;
+}
+
+/* ---------------- محتوى الفورم ---------------- */
+.step-content {
+  min-height: 200px; /* مساحة مبدئية عشان الفورم ميبقاش صغير أوي */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-group input {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #8b5cf6;
+}
+
+/* ---------------- فوتر الفورم (الزراير) ---------------- */
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 24px;
+  margin-top: 8px;
+}

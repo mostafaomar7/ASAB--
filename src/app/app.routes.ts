@@ -42,7 +42,7 @@ export const appRoutes: Routes = [
   // ==========================================
   {
     path: 'app', // قمنا بتسمية المسار الأساسي للنظام الفعلي بـ app أو dashboard
-    canActivate: [authGuard], // حماية هذا المسار بحيث لا يدخله إلا من سجل دخوله
+    // canActivate: [authGuard], // حماية هذا المسار بحيث لا يدخله إلا من سجل دخوله
     loadComponent: () =>
       import('./core/layouts/dashboard-shell/dashboard-shell.component').then((m) => m.DashboardShellComponent),
     children: [
@@ -51,6 +51,30 @@ export const appRoutes: Routes = [
       {
         path: 'kpis',
         loadComponent: () => import('./features/company-portal/components/kpis/kpis').then(m => m.Kpis)
+      },
+      {
+        path: 'admin-users',
+        loadComponent: () => import('./features/company-portal/components/admin-users/admin-users').then(m => m.AdminUsers)
+      },
+      {
+        path: 'premssions',
+        loadComponent: () => import('./features/company-portal/components/admin-premssions/admin-premssions').then(m => m.AdminPremssions)
+      },
+      {
+        path: 'settings',
+        loadComponent: () => import('./features/company-portal/components/admin-settings/admin-settings').then(m => m.AdminSettings)
+      },
+      {
+        path: 'activitylog',
+        loadComponent: () => import('./features/company-portal/components/admin-activitylog/admin-activitylog').then(m => m.AdminActivitylog)
+      },
+      {
+        path: 'subscription',
+        loadComponent: () => import('./features/company-portal/components/admin-subscribtion/admin-subscribtion').then(m => m.AdminSubscribtion)
+      },
+      {
+        path: 'subscribers',
+        loadComponent: () => import('./features/company-portal/components/admin-subscribers/admin-subscribers').then(m => m.AdminSubscribers)
       },
       // {
       //   path: 'branch-manager',

@@ -9,7 +9,7 @@ export const SIDEBAR_ITEMS: SidebarItem[] = [
   },
   {
     label: 'المستخدمون',
-    route: '/main-dashboard/accountant',
+    route: '/app/admin-users',
     icon: 'fa-solid fa-calculator',
     roles: ['admin']
   },
@@ -21,19 +21,19 @@ export const SIDEBAR_ITEMS: SidebarItem[] = [
   },
   {
     label: 'الاشتراكات',
-    route: '/main-dashboard/accountant',
+    route: '/app/subscribers',
     icon: 'fa-solid fa-calculator',
     roles: ['admin']
   },
   {
     label: 'اشتراكات الشركات',
-    route: '/main-dashboard/accountant',
+    route: '/app/subscription',
     icon: 'fa-solid fa-calculator',
     roles: ['admin']
   },
   {
     label: 'الصلاحيات',
-    route: '/main-dashboard/accountant',
+    route: '/app/premssions',
     icon: 'fa-solid fa-calculator',
     roles: ['admin']
   },
@@ -45,19 +45,13 @@ export const SIDEBAR_ITEMS: SidebarItem[] = [
   },
   {
     label: 'سجل النشاطات',
-    route: '/main-dashboard/accountant',
-    icon: 'fa-solid fa-calculator',
-    roles: ['admin']
-  },
-  {
-    label: 'المستخدمون',
-    route: '/main-dashboard/accountant',
+    route: '/app/activitylog',
     icon: 'fa-solid fa-calculator',
     roles: ['admin']
   },
   {
     label: 'اعدادات النظام',
-    route: '/main-dashboard/accountant',
+    route: '/app/settings',
     icon: 'fa-solid fa-calculator',
     roles: ['admin']
   },
