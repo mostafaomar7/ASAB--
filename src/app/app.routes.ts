@@ -50,36 +50,104 @@ export const appRoutes: Routes = [
       // مثال:
       {
         path: 'kpis',
-        loadComponent: () => import('./features/company-portal/components/kpis/kpis').then(m => m.Kpis)
+        loadComponent: () => import('./features/company-portal/components/main-admin/kpis/kpis').then(m => m.Kpis)
       },
       {
         path: 'admin-users',
-        loadComponent: () => import('./features/company-portal/components/admin-users/admin-users').then(m => m.AdminUsers)
+        loadComponent: () => import('./features/company-portal/components/main-admin/admin-users/admin-users').then(m => m.AdminUsers)
       },
       {
         path: 'premssions',
-        loadComponent: () => import('./features/company-portal/components/admin-premssions/admin-premssions').then(m => m.AdminPremssions)
+        loadComponent: () => import('./features/company-portal/components/main-admin/admin-premssions/admin-premssions').then(m => m.AdminPremssions)
       },
       {
         path: 'settings',
-        loadComponent: () => import('./features/company-portal/components/admin-settings/admin-settings').then(m => m.AdminSettings)
+        loadComponent: () => import('./features/company-portal/components/main-admin/admin-settings/admin-settings').then(m => m.AdminSettings)
       },
       {
         path: 'activitylog',
-        loadComponent: () => import('./features/company-portal/components/admin-activitylog/admin-activitylog').then(m => m.AdminActivitylog)
+        loadComponent: () => import('./features/company-portal/components/main-admin/admin-activitylog/admin-activitylog').then(m => m.AdminActivitylog)
       },
       {
         path: 'subscription',
-        loadComponent: () => import('./features/company-portal/components/admin-subscribtion/admin-subscribtion').then(m => m.AdminSubscribtion)
+        loadComponent: () => import('./features/company-portal/components/main-admin/admin-subscribtion/admin-subscribtion').then(m => m.AdminSubscribtion)
       },
       {
         path: 'subscribers',
-        loadComponent: () => import('./features/company-portal/components/admin-subscribers/admin-subscribers').then(m => m.AdminSubscribers)
+        loadComponent: () => import('./features/company-portal/components/main-admin/admin-subscribers/admin-subscribers').then(m => m.AdminSubscribers)
       },
-      // {
-      //   path: 'branch-manager',
-      //   loadComponent: () => import('./features/branch-manager/branch-dashboard.component').then(m => m.BranchDashboardComponent)
-      // },
+      {
+        path: 'branchKpis',
+        loadComponent: () => import('./features/company-portal/components/branch_manager/kpis/kpis').then(m => m.Kpis)
+      },
+      {
+        path: 'branch-employees',
+        loadComponent: () => import('./features/company-portal/components/branch_manager/branch-employees/branch-employees').then(m => m.BranchEmployees)
+      },
+      {
+        path: 'branch-items',
+        loadComponent: () => import('./features/company-portal/components/branch_manager/branch-items/branch-items').then(m => m.BranchItems)
+      },
+      {
+        path: 'branch-suppliers',
+        loadComponent: () => import('./features/company-portal/components/branch_manager/branch-suppliers/branch-suppliers').then(m => m.BranchSuppliers)
+      },
+      {
+        path: 'branch-uploads',
+        loadComponent: () => import('./features/company-portal/components/branch_manager/branch-uploads/branch-uploads').then(m => m.BranchUploads)
+      },
+       {
+        path: 'branch-setting',
+        loadComponent: () => import('./features/company-portal/components/branch_manager/branch-settings/branch-settings').then(m => m.BranchSettings)
+      },
+      {
+        path: 'Purchasing-Kpis',
+        loadComponent: () => import('./features/company-portal/components/purchasing-manager/purchasing-kpis/purchasing-kpis').then(m => m.PurchasingKpis)
+      },
+      {
+        path: 'Purchasing-new-orders',
+        loadComponent: () => import('./features/company-portal/components/purchasing-manager/purchasing-neworder/purchasing-neworder').then(m => m.PurchasingNeworder)
+      },
+      {
+        path: 'Purchasing-collect-orders',
+        loadComponent: () => import('./features/company-portal/components/purchasing-manager/purchasing-collectorder/purchasing-collectorder').then(m => m.PurchasingCollectorder)
+      },
+      {
+        path: 'Purchasing-send-supplier',
+        loadComponent: () => import('./features/company-portal/components/purchasing-manager/purchasing-sendsupplier/purchasing-sendsupplier').then(m => m.PurchasingSendsupplier)
+      },
+      {
+        path: 'Purchasing-items',
+        loadComponent: () => import('./features/company-portal/components/purchasing-manager/purchasing-items/purchasing-items').then(m => m.PurchasingItems)
+      },
+      {
+        path: 'Purchasing-suppliers',
+        loadComponent: () => import('./features/company-portal/components/purchasing-manager/purchasing-suppliers/purchasing-suppliers').then(m => m.PurchasingSuppliers)
+      },
+      {
+        path: 'supplier-kpi',
+        loadComponent: () => import('./features/company-portal/components/Suppliers/supplier-kpi/supplier-kpi').then(m => m.SupplierKpi)
+      },
+      {
+        path: 'supplier-neworder',
+        loadComponent: () => import('./features/company-portal/components/Suppliers/supplier-neworder/supplier-neworder').then(m => m.SupplierNeworder)
+      },
+      {
+        path: 'supplier-accepted',
+        loadComponent: () => import('./features/company-portal/components/Suppliers/supplier-accepted/supplier-accepted').then(m => m.SupplierAccepted)
+      },
+      {
+        path: 'supplier-rejected',
+        loadComponent: () => import('./features/company-portal/components/Suppliers/supplier-rejected/supplier-rejected').then(m => m.SupplierRejected)
+      },
+      {
+        path: 'supplier-items-price',
+        loadComponent: () => import('./features/company-portal/components/Suppliers/supplier-items-prices/supplier-items-prices').then(m => m.SupplierItemsPrices)
+      },
+      {
+        path: 'supplier-salesreport',
+        loadComponent: () => import('./features/company-portal/components/Suppliers/supplier-salesreport/supplier-salesreport').then(m => m.SupplierSalesreport)
+      },
     ],
   },
   {

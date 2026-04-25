@@ -56,12 +56,6 @@ export const SIDEBAR_ITEMS: SidebarItem[] = [
     roles: ['admin']
   },
   {
-    label: 'الرئيسية',
-    route: '/main-dashboard/home',
-    icon: 'fa-solid fa-border-all', // أيقونة كمثال
-    roles: ['accountant', 'chief_accountant', 'hr_affairs', 'supplier', 'purchasing_manager', 'branch_manager']
-  }, 
-  {
     label: 'المحاسبات',
     route: '/main-dashboard/accountant',
     icon: 'fa-solid fa-calculator',
@@ -80,22 +74,121 @@ export const SIDEBAR_ITEMS: SidebarItem[] = [
     icon: 'fa-solid fa-users',
     roles: ['hr_affairs']
   },
-  {
-    label: 'المورد',
-    route: '/main-dashboard/supplier',
-    icon: 'fa-solid fa-truck-fast',
-    roles: ['supplier']
+  // مدير المشتريات
+   {
+    label: 'نظرة عامة',
+    route: '/app/branchKpis',
+    icon: 'fa-solid fa-store',
+    roles: ['branch_manager']
   },
-  {
-    label: 'مدير المشتريات',
-    route: '/main-dashboard/purchasing-manager',
-    icon: 'fa-solid fa-cart-shopping',
+   {
+    label: 'الموظفون',
+    route: '/app/branch-employees',
+    icon: 'fa-solid fa-store',
+    roles: ['branch_manager']
+  },
+   {
+    label: 'الأصناف',
+    route: '/app/branch-items',
+    icon: 'fa-solid fa-store',
+    roles: ['branch_manager']
+  },
+   {
+    label: 'الموردون',
+    route: '/app/branch-suppliers',
+    icon: 'fa-solid fa-store',
+    roles: ['branch_manager']
+  },
+   {
+    label: 'رفع البيانات',
+    route: '/app/branch-uploads',
+    icon: 'fa-solid fa-store',
+    roles: ['branch_manager']
+  },
+   {
+    label: 'اعدادت الفرع',
+    route: '/app/branch-setting',
+    icon: 'fa-solid fa-store',
+    roles: ['branch_manager']
+  },
+  // purchasing_manager
+{
+    label: 'لوحة التحكم',
+    route: '/app/Purchasing-Kpis',
+    icon: 'fa-solid fa-store',
     roles: ['purchasing_manager']
   },
   {
-    label: 'مدير الفرع',
-    route: '/main-dashboard/branch-manager',
+    label: 'الطلبات الجديدة',
+    route: '/app/Purchasing-new-orders',
     icon: 'fa-solid fa-store',
-    roles: ['branch_manager']
-  }
+    roles: ['purchasing_manager']
+  },
+  {
+    label: 'الطلبات المجمعة',
+    route: '/app/Purchasing-collect-orders',
+    icon: 'fa-solid fa-store',
+    roles: ['purchasing_manager']
+  },
+  {
+    label: 'المراسلة للموردين',
+    route: '/app/Purchasing-send-supplier',
+    icon: 'fa-solid fa-store',
+    roles: ['purchasing_manager']
+  },
+  {
+    label: 'الاصناف',
+    route: '/app/Purchasing-items',
+    icon: 'fa-solid fa-store',
+    roles: ['purchasing_manager']
+  },
+  {
+    label: 'الموردون',
+    route: '/app/Purchasing-suppliers',
+    icon: 'fa-solid fa-store',
+    roles: ['purchasing_manager']
+  },
+  {
+    label: 'التقارير',
+    route: '/app/branch-setting',
+    icon: 'fa-solid fa-store',
+    roles: ['purchasing_manager']
+  },
+  // supplier
+  {
+    label: 'لوحة التحكم',
+    route: '/app/supplier-kpi',
+    icon: 'fa-solid fa-truck-fast',
+    roles: ['supplier']
+   },
+   {
+    label: 'الطلبات الجديدة',
+    route: '/app/supplier-neworder',
+    icon: 'fa-solid fa-truck-fast',
+    roles: ['supplier']
+   },
+   {
+    label: 'المقبولة',
+    route: '/app/supplier-accepted',
+    icon: 'fa-solid fa-truck-fast',
+    roles: ['supplier']
+   },
+   {
+    label: 'المرفوضة',
+    route: '/app/supplier-rejected',
+    icon: 'fa-solid fa-truck-fast',
+    roles: ['supplier']
+   },
+   {
+    label: 'الاصناف و الاسعار',
+    route: '/app/supplier-items-price',
+    icon: 'fa-solid fa-truck-fast',
+    roles: ['supplier']
+   },
+   {
+    label: 'تقارير المبيعات',
+    route: '/app/supplier-salesreport',
+    icon: 'fa-solid fa-truck-fast',
+    roles: ['supplier']
+   },
 ];

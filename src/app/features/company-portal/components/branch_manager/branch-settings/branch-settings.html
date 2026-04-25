@@ -1,0 +1,123 @@
+<div class="settings-container" dir="rtl">
+
+  <header class="page-header animate-fade-in">
+    <div class="title-section">
+      <h1>إعدادات الفرع</h1>
+      <span class="subtitle">فرع الرياض - العليا</span>
+    </div>
+    <button class="btn-save" (click)="saveSettings()">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      حفظ الإعدادات
+    </button>
+  </header>
+
+  <div class="settings-grid">
+    
+    <div class="setting-card animate-slide-up delay-1">
+      <div class="card-header">
+        <h3>البيانات الأساسية</h3>
+        <span class="icon-wrapper">📄</span>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label>اسم الفرع</label>
+          <input type="text" [(ngModel)]="settings.basicInfo.branchName" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>مدير الفرع</label>
+          <input type="text" [(ngModel)]="settings.basicInfo.managerName" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>رقم الهاتف</label>
+          <input type="text" [(ngModel)]="settings.basicInfo.phone" class="form-control" dir="ltr">
+        </div>
+        <div class="form-group">
+          <label>العنوان</label>
+          <input type="text" [(ngModel)]="settings.basicInfo.address" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <div class="setting-card animate-slide-up delay-2">
+      <div class="card-header">
+        <h3>أوقات العمل والشفتات</h3>
+        <span class="icon-wrapper">⏰</span>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label>وقت الفتح</label>
+          <input type="time" [(ngModel)]="settings.workingHours.openTime" class="form-control time-input">
+        </div>
+        <div class="form-group">
+          <label>وقت الإغلاق</label>
+          <input type="time" [(ngModel)]="settings.workingHours.closeTime" class="form-control time-input">
+        </div>
+        <div class="form-group">
+          <label>مدة الشفت (ساعات)</label>
+          <input type="number" [(ngModel)]="settings.workingHours.shiftDuration" class="form-control text-center">
+        </div>
+        <div class="info-alert">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          ساعات العمل اليومية: 15 ساعة - 1 شفتات
+        </div>
+      </div>
+    </div>
+
+    <div class="setting-card animate-slide-up delay-3">
+      <div class="card-header">
+        <h3>البيانات المالية والضريبية</h3>
+        <span class="icon-wrapper">💳</span>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label>الرقم الضريبي</label>
+          <input type="text" [(ngModel)]="settings.financials.taxNumber" class="form-control" dir="ltr">
+        </div>
+        <div class="form-group">
+          <label>رقم الحساب البنكي (IBAN)</label>
+          <input type="text" [(ngModel)]="settings.financials.iban" class="form-control" dir="ltr">
+        </div>
+        <div class="form-group">
+          <label>سقف العهدة النقدية (ر.س)</label>
+          <input type="number" [(ngModel)]="settings.financials.pettyCashLimit" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <div class="setting-card animate-slide-up delay-4">
+      <div class="card-header">
+        <h3>خيارات التشغيل</h3>
+        <span class="icon-wrapper">⚙️</span>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label>حد التنبيه للهدر (%)</label>
+          <input type="number" [(ngModel)]="settings.operations.wasteAlertLimit" class="form-control text-center">
+        </div>
+        
+        <div class="toggle-group">
+          <div class="toggle-info">
+            <label>إرسال التذكيرات تلقائياً</label>
+            <span class="desc">إرسال تذكير للمحاسب عند غياب تقرير الفرع</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="settings.operations.autoReminders">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="toggle-group">
+          <div class="toggle-info">
+            <label>إلزامية إرفاق الصور</label>
+            <span class="desc">يجب إرفاق صور مع كل عملية مشتريات أو هدر</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="settings.operations.mandatoryImages">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

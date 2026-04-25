@@ -1,0 +1,254 @@
+:host {
+  --primary: #6E29F6;
+  --bg-color: transparent;
+  --card-bg: #ffffff;
+  --text-main: #1a1a2e;
+  --text-muted: #8b8e98;
+  --border-color: #eef0f6;
+  --save-btn-bg: #059669; /* لون زر الحفظ الأخضر من الصورة */
+  --info-bg: #eff6ff;
+  --info-text: #3b82f6;
+
+  display: block;
+  font-family: 'Tajawal', 'Cairo', sans-serif;
+}
+
+.settings-container {
+  padding: 24px;
+  color: var(--text-main);
+}
+
+/* --- Header --- */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.title-section h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.title-section .subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.btn-save {
+  background-color: var(--save-btn-bg);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2);
+}
+
+.btn-save:hover {
+  background-color: #047857;
+  transform: translateY(-2px);
+}
+
+/* --- Settings Grid --- */
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* --- Setting Card --- */
+.setting-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: #fafafa;
+  border-radius: 12px 12px 0 0;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.icon-wrapper {
+  font-size: 1.2rem;
+}
+
+.card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* --- Form Controls --- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  background-color: #fff;
+  color: var(--text-main);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(110, 41, 246, 0.1);
+}
+
+.text-center { text-align: center; }
+.time-input { direction: ltr; text-align: right; } /* Adjusting time input for Arabic UI */
+
+/* --- Info Alert --- */
+.info-alert {
+  background-color: var(--info-bg);
+  color: var(--info-text);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* --- Toggle Group --- */
+.toggle-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border-color);
+}
+
+.toggle-group:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.toggle-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.toggle-info label {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.toggle-info .desc {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* --- Custom CSS Toggle Switch --- */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e1;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--primary); /* لونك الأساسي */
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--primary);
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.slider.round { border-radius: 24px; }
+.slider.round:before { border-radius: 50%; }
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+  .settings-grid { grid-template-columns: 1fr; }
+  .page-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .btn-save { width: 100%; justify-content: center; }
+}
+
+/* --- Animations --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+.animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+.animate-slide-up { opacity: 0; animation: slideUp 0.5s ease-out forwards; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }

@@ -1,0 +1,34 @@
+<div class="inventory-container" dir="rtl">
+  
+  <header class="page-header animate-fade-in">
+    <h1>الأصناف المحددة للجرد</h1>
+  </header>
+
+  <div class="alert-box animate-slide-up delay-1">
+    <div class="alert-content">
+      <p>هذه القائمة تم تحديدها بواسطة المحاسب وتزامنت تلقائياً.</p>
+    </div>
+    <div class="alert-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+      </svg>
+    </div>
+  </div>
+
+  <div class="card animate-slide-up delay-2">
+    <div class="card-header">
+      <h2>الأصناف — <span>{{ items.length }} أصناف</span></h2>
+    </div>
+    
+    <div class="items-grid">
+      @for (item of items; track item.id; let i = $index) {
+        <div class="item-card animate-scale-up" [style.animation-delay]="(i * 0.05) + 's'">
+          <span class="item-name">{{ item.name }}</span>
+          <div class="item-number">{{ item.id }}</div>
+        </div>
+      }
+    </div>
+  </div>
+
+</div>

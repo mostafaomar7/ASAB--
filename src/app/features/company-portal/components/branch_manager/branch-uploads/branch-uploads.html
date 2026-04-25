@@ -1,0 +1,75 @@
+<div class="uploads-container" dir="rtl">
+
+  <header class="page-header animate-fade-in">
+    <h1>رفع البيانات اليومية</h1>
+    <span class="date-display">التاريخ: 14 أكتوبر 2025</span>
+  </header>
+
+  <div class="warning-alert animate-slide-up delay-1">
+    <div class="alert-content">
+      <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span>تقارير مطلوبة اليوم لم تُرفع بعد</span>
+    </div>
+    <div class="alert-badge">طلبات الشراء - موعد: 02:00 م</div>
+  </div>
+
+  <div class="cards-grid">
+    @for (card of uploadCards; track card.id; let i = $index) {
+      <div class="upload-card animate-slide-up" 
+           [class.border-error]="card.hasErrorBorder"
+           [style.animation-delay]="(i * 0.1) + 0.2 + 's'">
+        
+        <div class="card-top">
+          <div class="card-info">
+            <h3>{{ card.title }}</h3>
+            <span class="subtitle">{{ card.subtitle }}</span>
+          </div>
+          
+          <div class="card-badges">
+            @if (card.isRequired) {
+              <span class="badge badge-required">مطلوب</span>
+            }
+          </div>
+        </div>
+
+        <div class="card-status-row">
+          <div class="status-left">
+            @if (card.deadline) {
+              <span class="deadline">الموعد: {{ card.deadline }}</span>
+            }
+          </div>
+          <div class="status-right" 
+               [class.text-green]="card.statusIcon === 'success'"
+               [class.text-warning]="card.statusIcon === 'warning'"
+               [class.text-error]="card.statusIcon === 'error'">
+            آخر رفع: {{ card.lastUpload }}
+            
+            @if (card.statusIcon === 'success') {
+              <svg viewBox="0 0 24 24" class="icon-sm"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            }
+            @if (card.statusIcon === 'warning') {
+              <svg viewBox="0 0 24 24" class="icon-sm"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            }
+            @if (card.statusIcon === 'error') {
+              <svg viewBox="0 0 24 24" class="icon-sm"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            }
+          </div>
+        </div>
+
+        @if (card.isUploadedToday) {
+          <div class="success-banner">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            تم الرفع بنجاح — <strong>اليوم</strong>
+          </div>
+        } @else {
+          <div class="upload-zone">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span>اضغط لرفع الملف</span>
+          </div>
+        }
+
+      </div>
+    }
+  </div>
+
+</div>

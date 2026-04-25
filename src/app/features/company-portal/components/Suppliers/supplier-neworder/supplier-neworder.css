@@ -1,0 +1,226 @@
+:host {
+  --primary: #6E29F6;
+  --bg-color: transparent;
+  --card-bg: #ffffff;
+  --text-main: #1a1a2e;
+  --text-muted: #8b8e98;
+  --border-color: #f1f5f9;
+  
+  /* Action Colors */
+  --green: #059669;
+  --green-hover: #047857;
+  --red: #ef4444;
+  --red-light: #fef2f2;
+  --red-border: #fecaca;
+  --table-header-bg: #f8fafc;
+
+  display: block;
+  font-family: 'Tajawal', 'Cairo', sans-serif;
+}
+
+.orders-container {
+  padding: 24px;
+  color: var(--text-main);
+}
+
+/* --- Header --- */
+.page-header {
+  margin-bottom: 24px;
+  text-align: right;
+}
+
+.page-header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-main);
+}
+
+/* --- Orders List --- */
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Card Header --- */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.customer-name {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.order-id {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* --- Buttons --- */
+.btn-accept, .btn-reject {
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-accept {
+  background-color: var(--green);
+  color: #fff;
+  border: none;
+}
+.btn-accept:hover {
+  background-color: var(--green-hover);
+  transform: translateY(-2px);
+}
+.btn-accept svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.btn-reject {
+  background-color: var(--red-light);
+  color: var(--red);
+  border: 1px solid var(--red-border);
+}
+.btn-reject:hover {
+  background-color: #fee2e2;
+  transform: translateY(-2px);
+}
+.btn-reject svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* --- Order Table --- */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: right;
+}
+
+.order-table th {
+  background-color: var(--table-header-bg);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 16px 24px;
+}
+
+.order-table td {
+  padding: 20px 24px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.font-bold { font-weight: 700; }
+.text-primary { color: var(--primary); }
+
+/* --- Card Footer --- */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background-color: #ffffff;
+}
+
+.delivery-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+}
+
+.text-muted { color: var(--text-muted); }
+
+.grand-total {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  color: var(--primary); /* اللون الأساسي للمبلغ الإجمالي */
+}
+
+.total-amount {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.currency {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .header-left {
+    width: 100%;
+  }
+  .btn-accept, .btn-reject {
+    flex: 1;
+    justify-content: center;
+  }
+  .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .grand-total {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+/* --- Animations --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+.animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+.animate-slide-up { opacity: 0; animation: slideUp 0.4s ease-out forwards; }

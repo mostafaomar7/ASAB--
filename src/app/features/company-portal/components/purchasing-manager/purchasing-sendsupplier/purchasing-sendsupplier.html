@@ -1,0 +1,49 @@
+<div class="sent-container" dir="rtl">
+
+  <header class="page-header animate-fade-in">
+    <h1>المرسلة للموردين</h1>
+  </header>
+
+  <div class="card animate-slide-up delay-1">
+    
+    <div class="card-header">
+      <h2>الطلبات المرسلة</h2>
+    </div>
+
+    <div class="orders-list">
+      @for (order of sentOrders; track order.id; let i = $index) {
+        <div class="order-row animate-slide-up" [style.animation-delay]="(i * 0.1) + 0.2 + 's'">
+          
+          <div class="supplier-info">
+            <h3 class="supplier-name">{{ order.supplierName }}</h3>
+            <span class="time-sent">{{ order.timeSent }}</span>
+          </div>
+
+          <div class="order-actions-group">
+            
+            <span class="status-badge" [ngClass]="order.statusType">
+              {{ order.status }}
+            </span>
+
+            <div class="order-price">
+              <span class="price-val">{{ order.price }}</span>
+              <span class="price-curr">ر.س</span>
+            </div>
+
+            <button class="btn-track" (click)="trackOrder(order.id)">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              تتبع
+            </button>
+
+          </div>
+
+        </div>
+      }
+    </div>
+
+  </div>
+
+</div>

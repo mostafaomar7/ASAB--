@@ -1,0 +1,66 @@
+<div class="orders-container" dir="rtl">
+
+  <header class="page-header animate-fade-in">
+    <h1>الطلبات الجديدة</h1>
+  </header>
+
+  <div class="orders-list">
+    @for (order of newOrders; track order.id; let i = $index) {
+      <div class="order-card animate-slide-up" [style.animation-delay]="(i * 0.1) + 's'">
+        
+        <div class="card-header">
+          <div class="header-right">
+            <h2 class="customer-name">{{ order.customerName }}</h2>
+            <span class="order-id">· {{ order.id }}</span>
+          </div>
+          <div class="header-left">
+            <button class="btn-accept" (click)="acceptOrder(order.id)">
+              <svg viewBox="0 0 24 24" width="16" height="16"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              قبول الطلب
+            </button>
+            <button class="btn-reject" (click)="rejectOrder(order.id)">
+              <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              رفض
+            </button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="order-table">
+            <thead>
+              <tr>
+                <th>الصنف</th>
+                <th>الكمية</th>
+                <th>سعر الوحدة</th>
+                <th>الإجمالي</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of order.items; track item.name) {
+                <tr>
+                  <td class="font-bold">{{ item.name }}</td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.unitPrice }}</td>
+                  <td class="text-primary font-bold">{{ item.total }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card-footer">
+          <div class="delivery-info">
+            <span class="text-muted">موعد التسليم:</span>
+            <span class="font-bold">{{ order.deliveryDate }}</span>
+          </div>
+          <div class="grand-total">
+            <span class="total-amount">{{ order.grandTotal }}</span>
+            <span class="currency">ر.س</span>
+          </div>
+        </div>
+
+      </div>
+    }
+  </div>
+
+</div>

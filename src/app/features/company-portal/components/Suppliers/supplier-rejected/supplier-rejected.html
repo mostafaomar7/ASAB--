@@ -1,0 +1,57 @@
+<div class="rejected-container" dir="rtl">
+
+  <header class="page-header animate-fade-in">
+    <div class="header-right">
+      <h1>الطلبات المرفوضة</h1>
+      <p class="subtitle">{{ totalRejectedCount }} طلب مرفوض</p>
+    </div>
+  </header>
+
+  <div class="card animate-slide-up delay-1">
+    
+    <div class="card-header">
+      <h2>سجل الرفض</h2>
+    </div>
+
+    <div class="orders-list">
+      @for (order of rejectedOrders; track order.id; let i = $index) {
+        <div class="order-row animate-slide-up" [style.animation-delay]="(i * 0.1) + 0.2 + 's'">
+          
+          <div class="col-info">
+            <div class="icon-wrapper">
+              <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            </div>
+            <div class="customer-details">
+              <div class="name-id-row">
+                <h3 class="customer-name">{{ order.customerName }}</h3>
+                <span class="order-id">{{ order.id }}</span>
+              </div>
+              <span class="order-meta">{{ order.details }}</span>
+            </div>
+          </div>
+
+          <div class="col-status">
+            <span class="status-badge badge-rejected">
+              {{ order.status }}
+            </span>
+          </div>
+
+          <div class="col-price">
+            <span class="price-val">{{ order.price }}</span>
+            <span class="price-curr">ر.س</span>
+          </div>
+
+          <div class="col-action">
+            <button class="btn-outline" (click)="viewReason(order.id)">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              السبب
+            </button>
+          </div>
+
+        </div>
+      }
+    </div>
+
+  </div>
+
+</div>

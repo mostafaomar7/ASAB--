@@ -1,0 +1,86 @@
+<div class="dashboard-container" dir="rtl">
+
+  <header class="page-header animate-fade-in">
+    <h1>لوحة تحكم المشتريات</h1>
+    <p class="subtitle">تجميع الطلبات والتنسيق مع الموردين</p>
+  </header>
+
+  <div class="kpis-grid">
+    @for (kpi of kpis; track kpi.id; let i = $index) {
+      <div class="kpi-card animate-slide-up" [ngClass]="'border-' + kpi.colorScheme" [style.animation-delay]="(i * 0.1) + 's'">
+        
+        <div class="kpi-content">
+          <div class="kpi-info">
+            <span class="kpi-title">{{ kpi.title }}</span>
+            <div class="kpi-value-wrapper">
+              <h2 class="kpi-value">{{ kpi.value }}</h2>
+              @if (kpi.suffix) { <span class="kpi-suffix">{{ kpi.suffix }}</span> }
+            </div>
+            <span class="kpi-subtitle">{{ kpi.subtitle }}</span>
+          </div>
+          
+          <div class="kpi-icon" [ngClass]="'bg-' + kpi.colorScheme">
+            @if (kpi.icon === 'cart') {
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            }
+            @if (kpi.icon === 'box') {
+              <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            }
+            @if (kpi.icon === 'truck') {
+              <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            }
+            @if (kpi.icon === 'chart') {
+              <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            }
+          </div>
+        </div>
+        
+      </div>
+    }
+  </div>
+
+  <div class="orders-section animate-slide-up delay-4">
+    
+    <div class="section-header">
+      <h2>الطلبات الجديدة من الفروع</h2>
+      <button class="btn-primary" (click)="aggregateOrders()">
+        <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        تجميع الطلبات
+      </button>
+    </div>
+
+    <div class="orders-list">
+      @for (order of branchOrders; track order.id; let i = $index) {
+        <div class="order-row animate-fade-in" [class.urgent-row]="order.isUrgent" [style.animation-delay]="(i * 0.1) + 0.5 + 's'">
+          
+          <div class="order-info">
+            <h3 class="branch-name">{{ order.branchName }}</h3>
+            <div class="order-meta">
+              <span>{{ order.itemsCount }} أصناف</span>
+              <span class="status-badge" [class.text-red]="order.isUrgent">{{ order.status }}</span>
+            </div>
+          </div>
+
+          <div class="order-value">
+            <span class="value-number">{{ order.value }}</span>
+            <span class="currency">ر.س</span>
+          </div>
+
+          <div class="order-actions">
+            <button class="btn-outline" (click)="viewDetails(order.id)">
+              <svg viewBox="0 0 24 24" width="14" height="14"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              تفاصيل
+            </button>
+            <button class="btn-approve" (click)="approveOrder(order.id)">
+              <svg viewBox="0 0 24 24" width="14" height="14"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              اعتماد
+            </button>
+          </div>
+
+        </div>
+      }
+    </div>
+
+  </div>
+
+</div>
